@@ -25,9 +25,4 @@ def calculate(num1, num2, operation):
         print("Error: invalid operation")
         return None
 
-
-number1 = get_float_input("Input firs number: ")
-number2 = get_float_input("Input firs number: ")
-action = input()
-
-calculate(number1, number2,  action)
+calculate(3, 5, "add")
