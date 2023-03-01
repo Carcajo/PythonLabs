@@ -1,1 +1,1 @@
-print(list(range(13))[::2])
+print(list(range(10))[::2])
