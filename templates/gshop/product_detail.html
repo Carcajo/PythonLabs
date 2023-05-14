@@ -1,0 +1,18 @@
+{% extends 'gshop/base.html' %}
+
+{% block content %}
+    <div class="text-white text-center">
+        <h1 class="text-center"> {{ product.name }}</h1>
+        {% if product.photo %}
+            <p><img class="card-img" alt="..." src="{{ product.photo.url }}"></p>
+        {% endif %}
+        <h3><span class="badge bg-white text-black-50">{{ product.price }}</span></h3>
+        <h6 class="text-uppercase m-3"> {{ product.description }}</h6>
+        <a><span class="badge bg-secondary">{{ pr.category }}</span></a>
+        <form action="{% url "cart_add" product.id %}" method="post">
+            {{ cart_form }}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-success" value="Добавить в корзину">
+        </form>
+    </div>
+{% endblock %}

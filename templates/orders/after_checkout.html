@@ -1,0 +1,12 @@
+{% extends "gshop/base.html" %}
+
+{% block content %}
+    <div class="text-white text-center p-3">
+        <h3 class="display-4 fw-bolder">Ваш заказ оформлен! Номер заказа - {{ order.id }}</h3>
+        <p class="lead fw-normal text-white-50 mb-0">С вами свяжется оператор по номеру телефона, указанному
+            при оформлении заказа.
+        </p>
+        <a href="{% url 'all_products' %}"
+           class="btn btn-lg btn-secondary fw-bold border-white bg-white text-dark my-3">Вернуться к покупкам</a>
+    </div>
+{% endblock %}

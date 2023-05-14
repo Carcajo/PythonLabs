@@ -1,0 +1,9 @@
+<nav class="nav nav-masthead justify-content-center float-md-end">
+    {% for cat in categories %}
+        {% if cat.id is cat_selected %}
+            <a class="nav-link fw-bold py-1 px-0 active">{{ cat.name }}</a>
+        {% else %}
+            <a href="{{ cat.get_absolute_url }}" class="nav-link fw-bold py-1 px-0"> {{ cat.name }}</a>
+        {% endif %}
+    {% endfor %}
+</nav>
