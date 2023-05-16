@@ -35,6 +35,6 @@
 {% endblock %}
 <form action="." method="post" class="order-form m-auto my-3">
     <table class>{{ form.as_table }}</table>
-    <p><input type="submit" class="btn btn-light my-3" value="Разместить заказ"></p>
+    <p><input type="submit" class="btn btn-light my-3" value="Place an order"></p>
     {% csrf_token %}
 </form>
