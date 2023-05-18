@@ -13,7 +13,7 @@ from .models import Product
 
 class AllProducts(ListView):
     model = Product
-    extra_context = {"title": "Продукция"}
+    extra_context = {"title": "Products"}
 
 
 # class HomePage()
