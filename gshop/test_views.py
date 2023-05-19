@@ -41,14 +41,14 @@ class TestViewsModels(APITestCase):
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_cat_empty_get(self):
-        category_slug = "pizza"
+        category_slug = "food"
         url = reverse_lazy('category', args=(category_slug,))
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_404_NOT_FOUND, code)
 
     def test_product_not_empty_get(self):
-        cat = Category.objects.create(name="pizza", slug="pizza")
-        prod = Product.objects.create(name="vetchina", slug="vetchina", description="test", price=123.0, category=cat)
+        cat = Category.objects.create(name="food", slug="dinner")
+        prod = Product.objects.create(name="pasta", slug="karbonara", description="test", price=123.0, category=cat)
         url = reverse_lazy('product', args=(cat.slug, prod.slug))
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_200_OK, code)
@@ -56,13 +56,13 @@ class TestViewsModels(APITestCase):
 
     def test_register_post(self):
         url = reverse_lazy('register')
-        code = self.client.post(url, {"username": "ilya", "first_name": "ilya", "last_name": "ilya", "phone_number":
-            "+375296465380", "mail": "i.lazuk@bk.ru", "password1": "blablabla"}).status_code
+        code = self.client.post(url, {"username": "fridrixjo", "first_name": "pavel", "last_name": "glytov", "phone_number":
+            "+37529445572529", "mail": "pglutov@gmial.com", "password1": "pass1234"}).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_login_post(self):
         url = reverse_lazy('login')
-        User.objects.create_user({"username": "testbro", "password": "blahblahblah"})
-        code = self.client.post(url, {"username": "testbro", "password": "blahblahblah"}).status_code
+        User.objects.create_user({"username": "user", "password": "pass1234"})
+        code = self.client.post(url, {"username": "user", "password": "pass1234"}).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
