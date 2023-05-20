@@ -27,7 +27,7 @@ def index(request):
 
 def about(request):
     context = {
-        "title": "О магазине",
+        "title": "About service",
     }
     return render(request, 'gshop/about.html', context=context)
 
@@ -65,7 +65,7 @@ class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'gshop/register.html'
     success_url = reverse_lazy('login')
-    extra_context = {"title": "Регистрация"}
+    extra_context = {"title": "Registration"}
 
     def form_valid(self, form):
         user = form.save()
@@ -77,7 +77,7 @@ class RegisterUser(CreateView):
 class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'gshop/login.html'
-    extra_context = {"title": "Регистрация"}
+    extra_context = {"title": "Registration"}
 
 
 

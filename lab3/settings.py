@@ -162,8 +162,8 @@ CART_SESSION_ID = 'cart'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'martin_help@mail.ru'
-EMAIL_HOST_PASSWORD = 'DMekm3aPhUo6attO27x4'
+EMAIL_HOST_USER = 'pglutov@gmail.com'
+EMAIL_HOST_PASSWORD = 'jfal;dskjlk;gjsakljflk;sj'
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
