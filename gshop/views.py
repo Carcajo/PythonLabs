@@ -34,12 +34,13 @@ def about(request):
 
 class CatProducts(ListView):
     model = Product
-    allow_empty = False
+    allow_empty = True
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["cat_selected"] = context["object_list"][0].category_id
-        context["title"] = str(context["object_list"][0].category)
+        if context['object_list']:
+            context["cat_selected"] = context["object_list"][0].category_id
+            context["title"] = str(context["object_list"][0].category)
         return context
 
     def get_queryset(self):
