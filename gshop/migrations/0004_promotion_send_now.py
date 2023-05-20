@@ -4,15 +4,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('gshop', '0003_promotion'),
+        ("gshop", "0003_promotion"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='promotion',
-            name='send_now',
-            field=models.BooleanField(default=True, verbose_name='Отправить email всем покупателям'),
+            model_name="promotion",
+            name="send_now",
+            field=models.BooleanField(
+                default=True, verbose_name="Отправить email всем покупателям"
+            ),
         ),
     ]

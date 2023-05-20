@@ -18,4 +18,3 @@ class EMailThread(threading.Thread):
             recipient_list=[self.send_to],
             fail_silently=False,
         )
-

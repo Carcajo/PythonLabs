@@ -1,68 +1,80 @@
-
 import rest_framework.status as status
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from rest_framework.test import APITestCase
 
-from .models import Product, Category
+from .models import Category, Product
 
 
 class TestViewsModels(APITestCase):
-
-
     def test_home_get(self):
-        url = reverse_lazy('home')
+        url = reverse_lazy("home")
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_all_products_get(self):
-        url = reverse_lazy('all_products')
+        url = reverse_lazy("all_products")
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_about_get(self):
-        url = reverse_lazy('about')
+        url = reverse_lazy("about")
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_login_get(self):
-        url = reverse_lazy('login')
+        url = reverse_lazy("login")
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_logout_get(self):
-        url = reverse_lazy('logout')
+        url = reverse_lazy("logout")
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_302_FOUND, code)
 
     def test_register_get(self):
-        url = reverse_lazy('register')
+        url = reverse_lazy("register")
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_cat_empty_get(self):
         category_slug = "food"
-        url = reverse_lazy('category', args=(category_slug,))
+        url = reverse_lazy("category", args=(category_slug,))
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_404_NOT_FOUND, code)
 
     def test_product_not_empty_get(self):
         cat = Category.objects.create(name="food", slug="dinner")
-        prod = Product.objects.create(name="pasta", slug="karbonara", description="test", price=123.0, category=cat)
-        url = reverse_lazy('product', args=(cat.slug, prod.slug))
+        prod = Product.objects.create(
+            name="pasta",
+            slug="karbonara",
+            description="test",
+            price=123.0,
+            category=cat,
+        )
+        url = reverse_lazy("product", args=(cat.slug, prod.slug))
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
-
     def test_register_post(self):
-        url = reverse_lazy('register')
-        code = self.client.post(url, {"username": "fridrixjo", "first_name": "pavel", "last_name": "glytov", "phone_number":
-            "+37529445572529", "mail": "pglutov@gmial.com", "password1": "pass1234"}).status_code
+        url = reverse_lazy("register")
+        code = self.client.post(
+            url,
+            {
+                "username": "fridrixjo",
+                "first_name": "pavel",
+                "last_name": "glytov",
+                "phone_number": "+37529445572529",
+                "mail": "pglutov@gmial.com",
+                "password1": "pass1234",
+            },
+        ).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_login_post(self):
-        url = reverse_lazy('login')
+        url = reverse_lazy("login")
         User.objects.create_user({"username": "user", "password": "pass1234"})
-        code = self.client.post(url, {"username": "user", "password": "pass1234"}).status_code
+        code = self.client.post(
+            url, {"username": "user", "password": "pass1234"}
+        ).status_code
         self.assertEqual(status.HTTP_200_OK, code)
-

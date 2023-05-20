@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('orders', '0001_initial'),
+        ("orders", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='order',
-            name='first_name',
-            field=models.CharField(max_length=50, verbose_name='Имя'),
+            model_name="order",
+            name="first_name",
+            field=models.CharField(max_length=50, verbose_name="Имя"),
         ),
         migrations.AlterField(
-            model_name='order',
-            name='last_name',
-            field=models.CharField(max_length=50, verbose_name='Фамилия'),
+            model_name="order",
+            name="last_name",
+            field=models.CharField(max_length=50, verbose_name="Фамилия"),
         ),
     ]

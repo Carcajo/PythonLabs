@@ -4,24 +4,39 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('gshop', '0002_rename_is_published_product_is_available'),
+        ("gshop", "0002_rename_is_published_product_is_available"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Promotion',
+            name="Promotion",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=180, verbose_name='Название акции')),
-                ('text', models.TextField(verbose_name='Текст')),
-                ('time_create', models.DateTimeField(auto_now_add=True, verbose_name='Время публикации')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(max_length=180, verbose_name="Название акции"),
+                ),
+                ("text", models.TextField(verbose_name="Текст")),
+                (
+                    "time_create",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Время публикации"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Специальное предложение',
-                'verbose_name_plural': 'Специальные предложения',
-                'ordering': ['time_create'],
+                "verbose_name": "Специальное предложение",
+                "verbose_name_plural": "Специальные предложения",
+                "ordering": ["time_create"],
             },
         ),
     ]

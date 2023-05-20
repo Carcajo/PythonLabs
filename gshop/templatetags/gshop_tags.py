@@ -13,7 +13,7 @@ def get_categories(filter=None):
         return Category.objects.filter(slug=filter)
 
 
-@register.inclusion_tag('gshop/list_categories.html')
+@register.inclusion_tag("gshop/list_categories.html")
 def show_categories(selected=None):
     cats = Category.objects.all()
     return {"categories": cats, "cat_selected": selected}
