@@ -8,7 +8,7 @@ from .models import OrderItem
 def order_create(request):
     cart = Cart(request)
     default_data = {"first_name": request.user.first_name, "last_name":
-        request.user.last_name, "address": "Ваш адрес"}
+        request.user.last_name, "address": "Your address"}
 
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
