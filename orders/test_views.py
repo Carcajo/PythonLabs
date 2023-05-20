@@ -9,13 +9,13 @@ from gshop.models import Product, Category
 class TestOrders(APITestCase):
     def test_order_create_post(self):
         # create cat and product
-        cat = Category.objects.create(name="pizza", slug="pizza")
-        prod = Product.objects.create(name="vetchina", slug="vetchina", description="test", price=123.0, category=cat)
+        cat = Category.objects.create(name="food", slug="dinner")
+        prod = Product.objects.create(name="pasta", slug="karbonara", description="test", price=123.0, category=cat)
 
         # create and login user
         url = reverse_lazy('login')
-        User.objects.create_user({"username": "testbro", "password": "blahblahblah"})
-        self.client.post(url, {"username": "testbro", "password": "blahblahblah"})  # user login
+        User.objects.create_user({"username": "user", "password": "pass1234"})
+        self.client.post(url, {"username": "user", "password": "pass1234"})  # user login
 
         # add to cart
         url = reverse_lazy('cart_add', args=(prod.pk,))
@@ -23,8 +23,8 @@ class TestOrders(APITestCase):
 
         # checkout cart
         url = reverse_lazy('checkout')
-        code = self.client.post(url, {"first_name": "ilya", "second_name": "lazuk", "email": "i.lazuk@bk.ru",
-                                      "address": "blablabla", "postal_code": "212025", "city": "new-york"}).status_code
+        code = self.client.post(url, {"first_name": "pavel", "second_name": "glytov", "email": "pglutov@gmail.com",
+                                      "address": "myaddress", "postal_code": "234792", "city": "minsk"}).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
 

@@ -4,8 +4,8 @@ from gshop.models import Product
 
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=50, verbose_name="Имя")
-    last_name = models.CharField(max_length=50, verbose_name="Фамилия")
+    first_name = models.CharField(max_length=50, verbose_name="Name")
+    last_name = models.CharField(max_length=50, verbose_name="Surname")
     email = models.EmailField()
     address = models.CharField(max_length=250)
     postal_code = models.CharField(max_length=20)
@@ -16,8 +16,8 @@ class Order(models.Model):
 
     class Meta:
         ordering = ('-created',)
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказы'
+        verbose_name = 'Order'
+        verbose_name_plural = 'Orders'
 
     def __str__(self):
         return str(self.id)
