@@ -1,12 +1,13 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='pmserializer',
-    version="1.0.1",
+    version="2.0.4",
     description="serializer of few formats",
     author="Carcajo",
     author_email='t375445391507@gmail.com',
+    url='https://github.com/Carcajo/pmserializer',
     install_requires=["pytomlpp", 'pyyaml'],
-    packages=find_packages(),
+    packages=['lab3'],
     test_suite='tests/',
 )

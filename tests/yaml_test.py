@@ -1,6 +1,6 @@
 from unittest import TestCase
 from tests.test_things import my_number, my_list, my_dict, fib, hello, Baby, mathematics,Gender
-from lab2 import SerializerFactory
+from lab3 import SerializerFactory
 
 
 class TestFunction(TestCase):
