@@ -1,0 +1,27 @@
+{% extends 'gshop/base.html' %}
+
+{% block content %}
+
+    <section class="pb-4">
+        <div class="text-white border rounded-5 border-dark">
+
+            <section class="w-100 p-4 d-flex justify-content-center pb-4">
+                <form method="post" style="width: 22rem;">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <!-- Submit button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Войти</button>
+                    </div>
+
+                    <!-- Register buttons -->
+                    <div class="text-center">
+                        <p>Ещё нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+
+                    </div>
+                </form>
+            </section>
+
+
+
+{% endblock %}

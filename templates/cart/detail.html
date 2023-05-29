@@ -1,0 +1,81 @@
+{% extends "gshop/base.html" %}
+{% load static %}
+
+{% block content %}
+    <section class="h-100 h-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100 text-white">
+                <div class="col">
+                    <div class="card bg-dark">
+                        <div class="card-body p-4">
+
+                            <div class="row">
+
+                                <div class="col-lg-7">
+                                    <h5 class="mb-3"><a href="{% url 'all_products' %}" class="text-white"><i
+                                            class="bi-arrow-left text-white"></i> Продолжить покупки</a></h5>
+                                    <hr>
+                                    {% if cart|length == 0 %}
+                                        <h5 class="mb-3"> Ваша корзина пуста =(</h5>
+                                    {% else %}
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <div>
+                                                <p class="mb-1">Всего позиций: {{ cart|length }}</p>
+                                            </div>
+                                        </div>
+
+
+                                        {% for item in cart %}
+                                            {% with product=item.product %}
+                                                <div class="card mb-3 bg-dark border-white">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="d-flex flex-row align-items-center">
+                                                                <div>
+                                                                    <img
+                                                                            src="{{ product.photo.url }}"
+                                                                            class="img-fluid rounded-3"
+                                                                            alt="Shopping item"
+                                                                            style="width: 65px;">
+                                                                </div>
+                                                                <div class="ms-3">
+                                                                    <h5>{{ product.name }}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex flex-row align-items-center">
+                                                                <div style="width: 50px;">
+                                                                    <h5 class="fw-normal mb-0">{{ item.quantity }}</h5>
+                                                                </div>
+                                                                <div style="width: 80px;">
+                                                                    <h5 class="mb-0">{{ item.total_price }}</h5>
+                                                                </div>
+                                                                <a href="{% url 'cart_remove' product.id %}"><i
+                                                                        class="bi-trash-fill"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endwith %}
+                                        {% endfor %}
+                                        <div class="d-flex justify-content-between p-2 mb-2">
+                                            <h5 class="fw-bold mb-0">Всего:</h5>
+                                            <h5 class="fw-bold mb-0">{{ cart.get_total_price }}</h5>
+                                        </div>
+                                        <p class="text-right">
+                                            <a href="{% url 'checkout' %}" type="button"
+                                               class="btn btn-success">Перейти к оплате</a>
+                                        </p>
+
+                                        </div>
+
+                                        </div>
+
+                                        </div>
+
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                    {% endif %}
+    </section>
+{% endblock %}
