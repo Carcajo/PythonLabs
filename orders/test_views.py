@@ -9,8 +9,8 @@ from gshop.models import Product, Category
 class TestOrders(APITestCase):
     def test_order_create_post(self):
         # create cat and product
-        cat = Category.objects.create(name="pizza", slug="pizza")
-        prod = Product.objects.create(name="vetchina", slug="vetchina", description="test", price=123.0, category=cat)
+        cat = Category.objects.create(name="passenger", slug="passenger")
+        prod = Product.objects.create(name="BMW", slug="BMW", description="test", price=123.0, category=cat)
 
         # create and login user
         url = reverse_lazy('login')
@@ -23,8 +23,8 @@ class TestOrders(APITestCase):
 
         # checkout cart
         url = reverse_lazy('checkout')
-        code = self.client.post(url, {"first_name": "ilya", "second_name": "lazuk", "email": "i.lazuk@bk.ru",
-                                      "address": "blablabla", "postal_code": "212025", "city": "new-york"}).status_code
+        code = self.client.post(url, {"first_name": "artyom", "second_name": "rogachev", "email": "myemail@gmail.com",
+                                      "address": "blablabla", "postal_code": "220004", "city": "minsk"}).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
 

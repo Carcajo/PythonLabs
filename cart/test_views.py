@@ -8,16 +8,16 @@ from gshop.models import Product, Category
 
 class TestCart(APITestCase):
     def test_cart_add_no_login_post(self):
-        cat = Category.objects.create(name="pizza", slug="pizza")
-        prod = Product.objects.create(name="vetchina", slug="vetchina", description="test", price=123.0, category=cat)
+        cat = Category.objects.create(name="passenger", slug="passenger")
+        prod = Product.objects.create(name="BMW", slug="BMW", description="test", price=123.0, category=cat)
         url = reverse_lazy('cart_add', args=(prod.pk,))
         code = self.client.post(url).status_code
         self.assertEqual(status.HTTP_302_FOUND, code)
 
     def test_add_to_cart_login_post(self):
         # create cat and product
-        cat = Category.objects.create(name="pizza", slug="pizza")
-        prod = Product.objects.create(name="vetchina", slug="vetchina", description="test", price=123.0, category=cat)
+        cat = Category.objects.create(name="passenger", slug="passenger")
+        prod = Product.objects.create(name="BMW", slug="BMW", description="test", price=123.0, category=cat)
 
         # create and login user
         url = reverse_lazy('login')

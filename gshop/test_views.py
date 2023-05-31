@@ -1,4 +1,3 @@
-
 import rest_framework.status as status
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
@@ -41,14 +40,14 @@ class TestViewsModels(APITestCase):
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_cat_empty_get(self):
-        category_slug = "pizza"
+        category_slug = ""
         url = reverse_lazy('category', args=(category_slug,))
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_404_NOT_FOUND, code)
 
     def test_product_not_empty_get(self):
-        cat = Category.objects.create(name="pizza", slug="pizza")
-        prod = Product.objects.create(name="vetchina", slug="vetchina", description="test", price=123.0, category=cat)
+        cat = Category.objects.create(name="passenger", slug="passenger")
+        prod = Product.objects.create(name="BMW", slug="BMW", description="test", price=123.0, category=cat)
         url = reverse_lazy('product', args=(cat.slug, prod.slug))
         code = self.client.get(url).status_code
         self.assertEqual(status.HTTP_200_OK, code)
@@ -56,8 +55,8 @@ class TestViewsModels(APITestCase):
 
     def test_register_post(self):
         url = reverse_lazy('register')
-        code = self.client.post(url, {"username": "ilya", "first_name": "ilya", "last_name": "ilya", "phone_number":
-            "+375296465380", "mail": "i.lazuk@bk.ru", "password1": "blablabla"}).status_code
+        code = self.client.post(url, {"username": "artyom", "first_name": "artyom", "last_name": "artyom", "phone_number":
+            "+375*********", "mail": "mymail@gmail.com", "password1": "blablabla"}).status_code
         self.assertEqual(status.HTTP_200_OK, code)
 
     def test_login_post(self):
@@ -65,14 +64,4 @@ class TestViewsModels(APITestCase):
         User.objects.create_user({"username": "testbro", "password": "blahblahblah"})
         code = self.client.post(url, {"username": "testbro", "password": "blahblahblah"}).status_code
         self.assertEqual(status.HTTP_200_OK, code)
-
-
-
-
-
-# class TestViewsModel(APITestCase):
-#     # create test model objects in db
-#
-#     #                              category=cat)
-
 

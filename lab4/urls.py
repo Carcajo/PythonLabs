@@ -1,4 +1,4 @@
-"""lab3 URL Configuration
+"""lab4 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from lab3 import settings
+from lab4 import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),

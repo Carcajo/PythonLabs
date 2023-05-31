@@ -6,9 +6,9 @@ from django.urls import reverse
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=255, verbose_name="Наименование продукта")
+    name = models.CharField(max_length=255, verbose_name="Наименование автомобиля")
     slug = models.SlugField(max_length=255, db_index=True, verbose_name="URL", unique=True)
-    description = models.TextField(verbose_name="Описание продукта")
+    description = models.TextField(verbose_name="Описание автомобиля")
     price = models.FloatField(verbose_name="Цена")
     photo = models.ImageField(upload_to=f"photos/", verbose_name="Фото")
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
@@ -22,13 +22,13 @@ class Product(models.Model):
         return reverse('product', kwargs={"product_slug": self.slug, "category_slug": self.category.slug})
 
     class Meta:
-        verbose_name = "Продукты"
-        verbose_name_plural = "Продукты"
+        verbose_name = "Автомобили"
+        verbose_name_plural = "Автомобили"
         ordering = ['name']
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=180, db_index=True, verbose_name="Тип продукта")
+    name = models.CharField(max_length=180, db_index=True, verbose_name="Тип автомобиля")
     slug = models.SlugField(max_length=255, db_index=True, verbose_name="URL", unique=True)
 
     def __str__(self):
@@ -38,8 +38,8 @@ class Category(models.Model):
         return reverse('category', kwargs={"category_slug": self.slug})
 
     class Meta:
-        verbose_name = "Тип продукта"
-        verbose_name_plural = "Типы продуктов"
+        verbose_name = "Тип автомобиля"
+        verbose_name_plural = "Типы автомобилей"
         ordering = ['name']
 
 
