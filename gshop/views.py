@@ -14,14 +14,14 @@ from .models import Product
 
 class AllProducts(ListView):
     model = Product
-    extra_context = {"title": "Products"}
+    extra_context = {"title": "Performances"}
 
 
 # class HomePage()
 
 
 def index(request):
-    context = {"title": "JoService"}
+    context = {"title": "CarcajoTheatre"}
     return render(request, "gshop/index.html", context=context)
 
 

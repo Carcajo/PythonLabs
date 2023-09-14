@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь терминов и понятий</title>
+</head>
+<body>
+    <h1>Словарь терминов и понятий</h1>
+    <ul>
+        {% for term in terms %}
+            <li>
+                <h2>{{ term.term }}</h2>
+                <p>{{ term.definition }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

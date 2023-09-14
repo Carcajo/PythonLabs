@@ -1,7 +1,7 @@
 from django.conf.urls.static import static
 from django.urls import path
 
-from joservice import settings
+from jotheatre import settings
 from orders.views import order_create
 
 urlpatterns = [

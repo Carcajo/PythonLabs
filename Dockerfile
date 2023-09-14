@@ -7,7 +7,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    && apt install -y netcat \
+    && apt install -y netcat-traditional \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip

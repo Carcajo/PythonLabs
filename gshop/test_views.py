@@ -61,11 +61,11 @@ class TestViewsModels(APITestCase):
         code = self.client.post(
             url,
             {
-                "username": "fridrixjo",
-                "first_name": "pavel",
-                "last_name": "glytov",
-                "phone_number": "+37529445572529",
-                "mail": "pglutov@gmial.com",
+                "username": "carcajo",
+                "first_name": "maxim",
+                "last_name": "puhov",
+                "phone_number": "+375445391507",
+                "mail": "t375445391507@gmail.com",
                 "password1": "pass1234",
             },
         ).status_code
